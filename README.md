@@ -29,7 +29,11 @@ Genes in Genetic(hero) class can be created by a random generator or generating 
 - The more achievements the hero get, for example, finding a key worth 1000 point, the more score he will get. 
 
 ## 4.	A Sort Function 
-- Yes! We are using a priority queue, PriorityBlockingQueue<Generic>(), because we want to do the multithreading part. We override the compareTo() method in Generic so it will be sorted by scores return from fitness function. 
+- Yes! We are using a priority queue.
+```
+static PriorityBlockingQueue<Generic> pq = new PriorityBlockingQueue<>();
+```
+- PriorityBlockingQueue, because we want to do the multithreading part. We override the compareTo() method in Generic so it will be sorted by scores return from fitness function. 
 
 ## 5.	Evolution Mechanism
 - To generate next generation from parents, we select 5 individuals with highest scores in the recent generation as parents. For each of these parents, they will be father or mother by turns. Crossover() method will be called many times (we choice 4 here) to create enough offspring for next generation.
@@ -41,9 +45,17 @@ flag < (father.getScore() / (father.getScore() + mother.getScore())
 - “Flag” here is a random “double” from 0 to 1. Parent with higher score will have higher possibilities to give their gene to children.
 ### 5.1 Maze is dangerous and may cause death. 
 - Our algorithm does some punishments: Generic(hero) will lose all his gene after the died step even if this hero has the highest score. Lost genes cannot be inherited to children (because the last generation is already “died”) and will use some random gene instead.
-
+```
+if(i < father.diedStep) {
+} else {
+  this.genearr[i] = new Gene();
+}
+```
 ## 6. Logging Function
 - We have a doLog() method to write logs. 
+```
+doLog(Generic generic, String code)
+```
 - We use generation number as file name and create .txt files in /history/ folder. Because generation is huge with bad luck, we decide to run doLog() method when individuals in the current generation get a higher score than previous.
 
 ## 7. Unit Tests
