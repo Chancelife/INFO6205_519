@@ -47,4 +47,8 @@ flag < (father.getScore() / (father.getScore() + mother.getScore())
 - We use generation number as file name and create .txt files in /history/ folder. Because generation is huge with bad luck, we decide to run doLog() method when individuals in the current generation get a higher score than previous.
 
 ## 7. Unit Tests
-- ![UnitTest](UnitTest.png)
+- ![UnitTest](FinalProject/UnitTest.png)
+
+## 8.	Parallel Computation Mechanism
+- We are using 2 threads —— run 2 colonies at the same time. The population of each colony is 100. 
+- Then merge these 2 colonies by adding all the populations into the priority queue, poll the 5 highest as parents. Finally do .clear() to empty the priority queue.
