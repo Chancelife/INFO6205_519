@@ -64,3 +64,7 @@ doLog(Generic generic, String code)
 ## 8.	Parallel Computation Mechanism
 - We are using 2 threads —— run 2 colonies at the same time. The population of each colony is 100. 
 - Then merge these 2 colonies by adding all the populations into the priority queue, poll the 5 highest as parents. Finally do .clear() to empty the priority queue.
+
+## Class Methods
+- ![MagicTower](FinalProject/MTClass.png)
+- ![Generic](FinalProject/GenericClass.png)
